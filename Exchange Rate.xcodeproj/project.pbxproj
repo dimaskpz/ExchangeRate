@@ -7,20 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A86B4B823E6B4E900893646 /* ErData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A86B4B723E6B4E900893646 /* ErData.swift */; };
+		6A86B4BA23E6B54600893646 /* ErManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A86B4B923E6B54600893646 /* ErManager.swift */; };
+		6A86B4BC23E6B54E00893646 /* ErModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A86B4BB23E6B54E00893646 /* ErModel.swift */; };
+		6A86B4C023E6C44900893646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A86B4BF23E6C44900893646 /* Main.storyboard */; };
+		6A86B4C223E6C74600893646 /* ErViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A86B4C123E6C74600893646 /* ErViewController.swift */; };
 		6ACA5CF923E6B31000084835 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACA5CF823E6B31000084835 /* AppDelegate.swift */; };
 		6ACA5CFB23E6B31000084835 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACA5CFA23E6B31000084835 /* SceneDelegate.swift */; };
-		6ACA5CFD23E6B31000084835 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACA5CFC23E6B31000084835 /* ViewController.swift */; };
-		6ACA5D0023E6B31000084835 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA5CFE23E6B31000084835 /* Main.storyboard */; };
 		6ACA5D0223E6B31100084835 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA5D0123E6B31100084835 /* Assets.xcassets */; };
 		6ACA5D0523E6B31100084835 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA5D0323E6B31100084835 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A86B4B723E6B4E900893646 /* ErData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErData.swift; sourceTree = "<group>"; };
+		6A86B4B923E6B54600893646 /* ErManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErManager.swift; sourceTree = "<group>"; };
+		6A86B4BB23E6B54E00893646 /* ErModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErModel.swift; sourceTree = "<group>"; };
+		6A86B4BF23E6C44900893646 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6A86B4C123E6C74600893646 /* ErViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErViewController.swift; sourceTree = "<group>"; };
 		6ACA5CF523E6B31000084835 /* Exchange Rate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exchange Rate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACA5CF823E6B31000084835 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6ACA5CFA23E6B31000084835 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6ACA5CFC23E6B31000084835 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6ACA5CFF23E6B31000084835 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6ACA5D0123E6B31100084835 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6ACA5D0423E6B31100084835 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6ACA5D0623E6B31100084835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +43,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A86B4B423E6B42700893646 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6A86B4B723E6B4E900893646 /* ErData.swift */,
+				6A86B4B923E6B54600893646 /* ErManager.swift */,
+				6A86B4BB23E6B54E00893646 /* ErModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6A86B4B523E6B43B00893646 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6A86B4BF23E6C44900893646 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6A86B4B623E6B44100893646 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6A86B4C123E6C74600893646 /* ErViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		6ACA5CEC23E6B31000084835 = {
 			isa = PBXGroup;
 			children = (
@@ -56,10 +88,11 @@
 		6ACA5CF723E6B31000084835 /* Exchange Rate */ = {
 			isa = PBXGroup;
 			children = (
+				6A86B4B623E6B44100893646 /* Controller */,
+				6A86B4B523E6B43B00893646 /* View */,
+				6A86B4B423E6B42700893646 /* Model */,
 				6ACA5CF823E6B31000084835 /* AppDelegate.swift */,
 				6ACA5CFA23E6B31000084835 /* SceneDelegate.swift */,
-				6ACA5CFC23E6B31000084835 /* ViewController.swift */,
-				6ACA5CFE23E6B31000084835 /* Main.storyboard */,
 				6ACA5D0123E6B31100084835 /* Assets.xcassets */,
 				6ACA5D0323E6B31100084835 /* LaunchScreen.storyboard */,
 				6ACA5D0623E6B31100084835 /* Info.plist */,
@@ -127,7 +160,7 @@
 			files = (
 				6ACA5D0523E6B31100084835 /* LaunchScreen.storyboard in Resources */,
 				6ACA5D0223E6B31100084835 /* Assets.xcassets in Resources */,
-				6ACA5D0023E6B31000084835 /* Main.storyboard in Resources */,
+				6A86B4C023E6C44900893646 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +171,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ACA5CFD23E6B31000084835 /* ViewController.swift in Sources */,
+				6A86B4BC23E6B54E00893646 /* ErModel.swift in Sources */,
+				6A86B4BA23E6B54600893646 /* ErManager.swift in Sources */,
+				6A86B4C223E6C74600893646 /* ErViewController.swift in Sources */,
+				6A86B4B823E6B4E900893646 /* ErData.swift in Sources */,
 				6ACA5CF923E6B31000084835 /* AppDelegate.swift in Sources */,
 				6ACA5CFB23E6B31000084835 /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +183,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6ACA5CFE23E6B31000084835 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6ACA5CFF23E6B31000084835 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6ACA5D0323E6B31100084835 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
