@@ -22,10 +22,10 @@ struct ErManager{
     
     var exchangeDataGet:ErModel?
     
-    func getValuePrice(for currency: String){
-        print(currency)
-
-    }
+//    func getValuePrice(firstCurrency: String, secondCurrency:String){
+//        
+//        
+//    }
     
     func fetchMoney(){
         let url = "\(exchangeURL)"

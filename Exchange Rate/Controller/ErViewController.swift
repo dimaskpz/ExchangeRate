@@ -20,6 +20,10 @@ class ErViewController : UIViewController {
     @IBOutlet weak var currencyPicker: UIPickerView!
     var erManager = ErManager()
     
+    var erLocal:ErModel?
+    
+    var isFirstPickerSelected = false
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         erManager.delegate = self
@@ -33,13 +37,19 @@ class ErViewController : UIViewController {
     }
     
     @IBAction func switchPressed(_ sender: UIButton) {
-        let temp = firstCurrencyLabel.text
-               firstCurrencyLabel.text = secondCurrencyLabel.text
-               secondCurrencyLabel.text = temp
+        let tempLabel = firstCurrencyLabel.text
+        firstCurrencyLabel.text = secondCurrencyLabel.text
+        secondCurrencyLabel.text = tempLabel
+        
+        let tempText = firstCurrencyTextField.text
+        firstCurrencyTextField.text = secondCurrencyTextField.text
+        secondCurrencyTextField.text = tempText
     }
     @IBAction func firstCurrencyPressed(_ sender: UIButton) {
         firstCurrencyTextField.endEditing(true)
+        isFirstPickerSelected = true
         currencyPicker.isHidden = false
+        
     }
     @IBAction func secondCurrencyPressed(_ sender: UIButton) {
         firstCurrencyTextField.endEditing(true)
@@ -61,7 +71,18 @@ extension ErViewController:UITextFieldDelegate{
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        secondCurrencyTextField.text = firstCurrencyTextField.text
+        //        secondCurrencyTextField.text =
+        getValuePrice(firstCurrency: firstCurrencyLabel.text!, secondCurrency: secondCurrencyLabel.text!, moneyValue: firstCurrencyLabel.text!)
+    }
+    
+    func getValuePrice(firstCurrency: String, secondCurrency:String, moneyValue:String){
+        let firstValue = Double(firstCurrencyTextField.text!)
+        print(firstValue ?? -1)
+        
+        let answer = (firstValue ?? 1) * (erLocal?.IDR ?? 1)
+        print(answer)
+        
+        secondCurrencyTextField.text = String(answer)
     }
     
 }
@@ -80,15 +101,34 @@ extension ErViewController:UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return erManager.currencyArray[row]
     }
-
+    
 }
 
 extension ErViewController: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currencyPicker.isHidden = true
+        
+       
+        
         let selectedValue = erManager.currencyArray[row]
-        erManager.getValuePrice(for: selectedValue)
+        
+        if isFirstPickerSelected == true && selectedValue != secondCurrencyLabel.text || isFirstPickerSelected == false && selectedValue != firstCurrencyLabel.text {
+            if isFirstPickerSelected == true {
+                isFirstPickerSelected = false
+                firstCurrencyLabel.text = selectedValue
+                currencyPicker.isHidden = true
+            } else {
+                secondCurrencyLabel.text = selectedValue
+                currencyPicker.isHidden = true
+            }
+        } else {
+            isFirstPickerSelected = false
+            let alert = UIAlertController(title: "", message: "Please select different currencies", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        }
+        
     }
 }
 
@@ -98,7 +138,7 @@ extension ErViewController: ErManagerDelegate{
     func didUpdateExchange(_ erManager: ErManager, exchange: ErModel) {
         DispatchQueue.main.async {
             
-//            self.secondCurrencyLabel.text = exchange.
+            self.erLocal = exchange
         }
     }
     
@@ -117,9 +157,9 @@ extension UITextField {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-            target: nil, action: nil)
+                                            target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
-            target: self, action: #selector(resignFirstResponder))
+                                         target: self, action: #selector(resignFirstResponder))
         keyboardToolbar.items = [flexibleSpace, doneButton]
         self.inputAccessoryView = keyboardToolbar
     }
