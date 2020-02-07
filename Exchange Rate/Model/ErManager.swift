@@ -16,6 +16,17 @@ protocol ErManagerDelegate {
 struct ErManager{
     let exchangeURL = "https://api.exchangerate-api.com/v4/latest/USD"
     
+    let currencyArray = ["IDR","USD","SGD","EUR"]
+    
+    var delegate:ErManagerDelegate?
+    
+    var exchangeDataGet:ErModel?
+    
+    func getValuePrice(for currency: String){
+        print(currency)
+
+    }
+    
     func fetchMoney(){
         let url = "\(exchangeURL)"
         performRequest(with: url)
@@ -30,7 +41,7 @@ struct ErManager{
                 }
                 if let safeData =  data {
                     if let exchange = self.parseJSON(erData: safeData){
-                        //
+                        self.delegate?.didUpdateExchange(self, exchange: exchange)
                     }
                 }
             }
