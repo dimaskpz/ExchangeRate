@@ -26,6 +26,13 @@ class ErViewController : UIViewController {
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        
+
+        firstCurrencyLabel.layer.masksToBounds = true
+        firstCurrencyLabel.layer.cornerRadius = 11
+        secondCurrencyLabel.layer.masksToBounds = true
+        secondCurrencyLabel.layer.cornerRadius = 11
+        
         erManager.delegate = self
         erManager.fetchMoney()
         firstCurrencyTextField.delegate = self
