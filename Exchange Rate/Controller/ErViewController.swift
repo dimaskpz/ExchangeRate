@@ -53,8 +53,10 @@ class ErViewController : UIViewController {
     }
     @IBAction func secondCurrencyPressed(_ sender: UIButton) {
         firstCurrencyTextField.endEditing(true)
+        isFirstPickerSelected = false
         currencyPicker.isHidden = false
     }
+    
 }
 
 //MARK: -UITextFieldDelegate
@@ -76,13 +78,48 @@ extension ErViewController:UITextFieldDelegate{
     }
     
     func getValuePrice(firstCurrency: String, secondCurrency:String, moneyValue:String){
-        let firstValue = Double(firstCurrencyTextField.text!)
-        print(firstValue ?? -1)
         
-        let answer = (firstValue ?? 1) * (erLocal?.IDR ?? 1)
+        let originalText = String(firstCurrencyTextField.text!)
+        
+        let firstValue:String = replaceChar(originalText: originalText, of: ",", to: ".")
+        
+        let textInput = Double(firstValue)
+        
+        let firstRate = getValueRate(currency: firstCurrency)
+        
+        let secondRate = getValueRate(currency: secondCurrency)
+        
+        let answer = (textInput ?? -1) / firstRate * secondRate
         print(answer)
+        let formatedAnswer = replaceChar(originalText: String(format: "%.1f",answer), of: ".", to: ",")
+        print(formatedAnswer)
         
-        secondCurrencyTextField.text = String(answer)
+        secondCurrencyTextField.text = formatedAnswer
+    }
+    
+    func replaceChar(originalText:String, of:String, to:String)->String{
+        let charset = CharacterSet(charactersIn: of)
+        if originalText.rangeOfCharacter(from: charset) != nil {
+            let changedValue = originalText.replacingOccurrences(of: of, with: to)
+            return changedValue
+        } else {
+            return originalText
+        }
+    }
+    
+    func getValueRate(currency:String)->Double{
+        switch currency {
+        case "USD":
+            return erLocal?.USD ?? -1
+        case "IDR":
+            return erLocal?.IDR ?? -1
+        case "SGD":
+            return erLocal?.SGD ?? -1
+        case "EUR":
+            return erLocal?.EUR ?? -1
+        default:
+            return -1
+        }
     }
     
 }
@@ -104,11 +141,11 @@ extension ErViewController:UIPickerViewDataSource{
     
 }
 
+//MARK: -UIPickerViewDelegate
+
 extension ErViewController: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-       
         
         let selectedValue = erManager.currencyArray[row]
         
@@ -121,12 +158,12 @@ extension ErViewController: UIPickerViewDelegate{
                 secondCurrencyLabel.text = selectedValue
                 currencyPicker.isHidden = true
             }
+            getValuePrice(firstCurrency: firstCurrencyLabel.text!, secondCurrency: secondCurrencyLabel.text!, moneyValue: firstCurrencyLabel.text!)
         } else {
             isFirstPickerSelected = false
             let alert = UIAlertController(title: "", message: "Please select different currencies", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
-            
         }
         
     }
@@ -137,7 +174,6 @@ extension ErViewController: UIPickerViewDelegate{
 extension ErViewController: ErManagerDelegate{
     func didUpdateExchange(_ erManager: ErManager, exchange: ErModel) {
         DispatchQueue.main.async {
-            
             self.erLocal = exchange
         }
     }
@@ -160,7 +196,10 @@ extension UITextField {
                                             target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
                                          target: self, action: #selector(resignFirstResponder))
-        keyboardToolbar.items = [flexibleSpace, doneButton]
+//        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel,
+//                                           target: self, action: keyboardDone)
+        
+        keyboardToolbar.items = [ flexibleSpace, doneButton]
         self.inputAccessoryView = keyboardToolbar
     }
 }

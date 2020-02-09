@@ -106,10 +106,21 @@
                                             <action selector="secondCurrencyPressed:" destination="kfn-b3-MzC" eventType="touchUpInside" id="S6D-Nf-MU9"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchange Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMx-iJ-2kv">
+                                        <rect key="frame" x="82" y="59" width="251" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="251" id="GRD-nK-tQu"/>
+                                            <constraint firstAttribute="height" constant="32" id="cLM-Mq-0M8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="qMx-iJ-2kv" firstAttribute="top" secondItem="NHG-vR-6lM" secondAttribute="top" constant="59" id="0LC-OA-bSE"/>
                                     <constraint firstItem="hRQ-KE-rF8" firstAttribute="leading" secondItem="2SQ-tG-JjF" secondAttribute="trailing" constant="34" id="4xf-71-kqM"/>
                                     <constraint firstAttribute="height" constant="264" id="5Wv-Vc-Z4E"/>
                                     <constraint firstAttribute="trailing" secondItem="Rlk-JC-3lj" secondAttribute="trailing" constant="40" id="8c1-Kd-2Fk"/>
@@ -117,8 +128,10 @@
                                     <constraint firstItem="gSs-cb-Jne" firstAttribute="top" secondItem="NHG-vR-6lM" secondAttribute="top" constant="135" id="DGL-2j-FsQ"/>
                                     <constraint firstItem="RVz-39-xfA" firstAttribute="top" secondItem="NHG-vR-6lM" secondAttribute="top" constant="88" id="GHJ-Ye-Gh1"/>
                                     <constraint firstAttribute="trailing" secondItem="SIg-Lh-yze" secondAttribute="trailing" id="GRB-YR-D9p"/>
+                                    <constraint firstItem="qMx-iJ-2kv" firstAttribute="leading" secondItem="NHG-vR-6lM" secondAttribute="leading" constant="82" id="HwR-cd-wkJ"/>
                                     <constraint firstItem="Rlk-JC-3lj" firstAttribute="top" secondItem="gSs-cb-Jne" secondAttribute="bottom" constant="22" id="JqB-in-FI0"/>
                                     <constraint firstAttribute="bottom" secondItem="hRQ-KE-rF8" secondAttribute="bottom" constant="68.5" id="UMq-Hu-fAc"/>
+                                    <constraint firstAttribute="trailing" secondItem="qMx-iJ-2kv" secondAttribute="trailing" constant="81" id="Y63-Eb-v2R"/>
                                     <constraint firstItem="UX3-Oc-1Ne" firstAttribute="leading" secondItem="NHG-vR-6lM" secondAttribute="leading" constant="40" id="YGm-UR-Hzh"/>
                                     <constraint firstItem="Gd8-g9-0g4" firstAttribute="leading" secondItem="2SQ-tG-JjF" secondAttribute="trailing" constant="39" id="f44-Qj-FHo"/>
                                     <constraint firstItem="2SQ-tG-JjF" firstAttribute="top" secondItem="NHG-vR-6lM" secondAttribute="top" constant="135" id="iGv-5z-4E3"/>
